@@ -1,0 +1,49 @@
+---
+type Props = {
+    title?: string;
+    stylesheets?: string[];
+    scripts?: string[];
+}
+
+const { title = 'Parrot Plane', stylesheets = [], scripts = [] } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="./css/site.css" media="screen" />
+		{stylesheets.map(x => <link rel="stylesheet" href={x} media="screen" />)}
+		<title>{title}</title>
+	</head>
+	<body>
+		{
+			() => {
+				if(scripts.length > 0) {
+					<noscript>This page requires JavaSrcipt in order to function properly.</noscript>
+				}
+			}
+		}
+		<header id="header-main">
+			<hgroup>
+				<h1>Parrot Plane</h1>
+				<p>Fly with smile and style...</p>
+			</hgroup>
+		</header>
+	
+		<main>
+			<div>
+				<slot/>
+			</div>
+		</main>
+	
+		<footer id="footer-main">
+			No refunds!!!
+		</footer>
+		<!-- {scripts.map(x => <script src={x} lang="js" type="module"></script>)} -->
+	</body>
+</html>

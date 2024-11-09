@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PassportsComponent from '../components/svelte/Passports.svelte';
+// const url = Astro.url;
+---
+
+<Layout>
+	<h2>Passports</h2>
+    <section>
+		<PassportsComponent client:only="svelte" />
+	</section>
+</Layout>
